@@ -1,0 +1,28 @@
+### Break the requirements into task such as: 
+-  1.  Create Users in Kubernetes
+-  2.  Create a Namespace for the Team and Grant RBAC Permissions to Users
+-  3.  Limit the Amount of Resources and Pods in the Development Namespace
+-  4.  Limit the Amount of Pods Running in the Development Namespace
+
+### 1.  Create Users in Kubernetes
+In this task, you will create a user for the development team called John. The goal of this task is to evaluate how a user is created in Kubernetes with a specific group and how to log in as the new user that you have created.
+Remember that Kubernetes doesn't provide an API to create users, so you must rely on an external authentication method, such as self-signed certificates.
+
+Note: You only need to create a user for this task and you should test its login. It's completely acceptable to receive errors such as: User "xyz" cannot list resource "xyz"  - This error indicates that the user is a valid user, but it still doesn't have any permissions attached.
+
+On the other hand, receiving errors similar to error: You must be logged in to the server (Unauthorized)  is unacceptable and implies that the new user is not able to login to the cluster.
+
+### 2.  Create a Namespace for the Team and Grant RBAC Permissions to Users
+In this task, you will create a namespace that will isolate all the resources of the development team.  You need to ensure that John can access ONLY the development namespace. Additionally, you need to ensure that John is able to perform ALL operations on Deployments, ReplicaSets and Pods.
+
+John MUST NOT be able to perform any operations on any resources other than the ones mentioned above. For example, John shouldn't be able to create configmaps or secrets - you can test this by trying to create a dummy configmap/secret and it should result in an error.
+
+### 3.  Limit the Amount of Resources and Pods in the Development Namespace
+In this task, you will ensure that John or any other member can't consume all the cluster resources. This means, that you will have to constrain the development team to 32Mi of RAM and 20m of CPU per pod. If a pod wants to use more than that, its creation should fail.
+
+To ensure that everything works as expected, create a dummy deployment using the nginx:alpine image, and ensure that the conditions mentioned above are enforced.
+
+### 4.  Limit the Amount of Pods Running in the Development Namespace
+In this task, you will ensure that the development team can't create more than 5 pods at a time in the development namespace. This is to respect resources in the cluster and prevent one team from using all of the available resources.
+
+To test that it works, apply the rule as the admin user and the login as "John" to create more than 5 pods. If the rule works correctly, John won't be able to create 6 pods at a time.
