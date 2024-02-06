@@ -1,0 +1,27 @@
+### Lab scenario
+In this lab, you will be a Kubernetes Engineer who is part of the Automation team for a Marketing company that relies on Kubernetes to run its business. The organization currently provisions and assigns clusters to each internal department - for example, the development team has one cluster to play around with, the operations team has another cluster, and the research team also has a cluster. This approach of assigning a single cluster per area is expensive in terms of cost and management. To solve the problem, the CTO has proposed to start moving towards a Multi-tenant architecture using Kubernetes, where a single cluster would be used to host most - if not all - areas in the company. You will be the engineer implementing a proof-of-concept to assess the feasibility and benefits of this project. As part of the PoC you are expected to provision users and groups; you should also configure limits and constraints for such users to guarantee a stable multi-tenant cluster across different teams.
+
+### Requirement
+Basic knowledge of Kubernetes
+Basic understanding of Pods and Deployments
+
+### What you'll learn
+Role Based Access Control
+Multi-tenancy Principles
+Limit Ranges and Resource Quotas
+User and Group Management in Kubernetes
+
+### Project Assignment
+Hi, 
+Thanks for working on this project for our team.
+After months of expensive cloud bills - because of our multiple Kubernetes clusters - we're finally ready to kick off a project to reduce our overall costs by managing a single cluster. The CTO of the company has proposed to centralize all of our clusters into a single one, applying Multi-tenancy principles to reduce cost and complexity. We currently have 3 main teams that have dedicated clusters (development, operations, and research). I trust your expertise as a Kubernetes Engineer and I'm counting on you to run a proof-of-concept to merge all these clusters into a single one.
+
+  (1)    There are four key principles that the CTO wants us to keep in mind to ensure a smooth transition.
+  
+  (2)    You should find a way to create users and groups in Kubernetes so that we can generate users and groups for each team. Each team should have its own namespace, and members of a           specific team should ONLY have access to their namespaces - access to any other namespace is forbidden.
+  
+  (3)    Within a namespace, the only allowed resources will be Deployments, ReplicaSets, and Pods.
+
+  (4)    Each namespace MUST NOT allow the creation of more than 5 pods, and each pod should be limited to 20Mi of RAM and 10m of CPU.
+      
+      With this in mind, please go ahead and apply all 4 points mentioned above by creating a single user called John, who is part of the development team. Wishing you the best!
